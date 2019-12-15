@@ -40,7 +40,7 @@ func UnderscoreToCamelCase(str string) string {
 	return govalidator.UnderscoreToCamelCase(str)
 }
 
-func FindString(array []string, str string) int {
+func FindString(str string, array []string) int {
 	for index, s := range array {
 		if str == s {
 			return index
@@ -50,7 +50,7 @@ func FindString(array []string, str string) int {
 }
 
 func StringIn(str string, array []string) bool {
-	return FindString(array, str) > -1
+	return FindString(str, array) > -1
 }
 
 func Reverse(s string) string {

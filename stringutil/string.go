@@ -53,6 +53,30 @@ func StringIn(str string, array []string) bool {
 	return FindString(str, array) > -1
 }
 
+func StringJoin(array ...string) string {
+	buf := new(strings.Builder)
+	for _, s := range array {
+		buf.WriteString(s)
+	}
+	return buf.String()
+}
+
+func StringRomove(str string, array []string) ([]string, bool) {
+	index := FindString(str, array)
+	if index == -1 {
+		return nil, false
+	}
+
+	result := []string{}
+	if index > 0 {
+		result = append(result, array[:index]...)
+	}
+	if index < len(array)-1 {
+		result = append(result, array[(index+1):]...)
+	}
+	return result, true
+}
+
 func Reverse(s string) string {
 	size := len(s)
 	buf := make([]byte, size)
@@ -62,12 +86,4 @@ func Reverse(s string) string {
 		utf8.EncodeRune(buf[size-start:], r)
 	}
 	return string(buf)
-}
-
-func StringJoin(array ...string) string {
-	buf := new(strings.Builder)
-	for _, s := range array {
-		buf.WriteString(s)
-	}
-	return buf.String()
 }

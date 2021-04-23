@@ -1,6 +1,5 @@
 package sortutil
 
-// 打乱顺序
 func Jumble(array []interface{}) []interface{} {
 	tmpMap := make(map[int]interface{}, len(array))
 	for i, ele := range array {

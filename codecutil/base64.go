@@ -1,4 +1,4 @@
-package base64util
+package codecutil
 
 import (
 	"bytes"

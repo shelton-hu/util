@@ -1,5 +1,10 @@
+*.exe
 go.sum
 
-/.vscode
-.vscode/
+.DS_Store
+.idea
+.history
+.images
+.local
+.vscode
 .prettierrc

@@ -1,8 +1,6 @@
 package yamlutil
 
-import (
-	"github.com/ghodss/yaml"
-)
+import "github.com/ghodss/yaml"
 
 // Marshals the object into JSON then converts JSON to YAML and returns the YAML.
 func Encode(o interface{}) ([]byte, error) {

@@ -1,11 +1,11 @@
-package hashutil
+package scrutil
 
 import (
 	"crypto/md5"
 	"encoding/hex"
 )
 
-func GetStringMd5(s string) string {
+func MD5(s string) string {
 	md5 := md5.New()
 	_, err := md5.Write([]byte(s))
 	if err != nil {

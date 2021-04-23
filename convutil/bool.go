@@ -1,4 +1,4 @@
-package boolutil
+package convutil
 
 func Bool2Int(v bool) int {
 	if v {

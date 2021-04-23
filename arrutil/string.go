@@ -1,13 +1,5 @@
-package stringutil
+package arrutil
 
-import (
-	"strings"
-	"unicode/utf8"
-
-	"github.com/asaskevich/govalidator"
-)
-
-// Creates an slice of slice values not included in the other given slice.
 func Diff(base, exclude []string) (result []string) {
 	excludeMap := make(map[string]bool)
 	for _, s := range exclude {
@@ -32,14 +24,6 @@ func Unique(ss []string) (result []string) {
 	return result
 }
 
-func CamelCaseToUnderscore(str string) string {
-	return govalidator.CamelCaseToUnderscore(str)
-}
-
-func UnderscoreToCamelCase(str string) string {
-	return govalidator.UnderscoreToCamelCase(str)
-}
-
 func FindString(str string, array []string) int {
 	for index, s := range array {
 		if str == s {
@@ -51,14 +35,6 @@ func FindString(str string, array []string) int {
 
 func StringIn(str string, array []string) bool {
 	return FindString(str, array) > -1
-}
-
-func StringJoin(array ...string) string {
-	buf := new(strings.Builder)
-	for _, s := range array {
-		buf.WriteString(s)
-	}
-	return buf.String()
 }
 
 func StringRomove(str string, array []string) ([]string, bool) {
@@ -75,15 +51,4 @@ func StringRomove(str string, array []string) ([]string, bool) {
 		result = append(result, array[(index+1):]...)
 	}
 	return result, true
-}
-
-func Reverse(s string) string {
-	size := len(s)
-	buf := make([]byte, size)
-	for start := 0; start < size; {
-		r, n := utf8.DecodeRuneInString(s[start:])
-		start += n
-		utf8.EncodeRune(buf[size-start:], r)
-	}
-	return string(buf)
 }

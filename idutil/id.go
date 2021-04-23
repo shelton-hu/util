@@ -2,19 +2,14 @@ package idutil
 
 import (
 	"crypto/rand"
-	"fmt"
-	mathrand "math/rand"
-	"time"
 
 	"github.com/sony/sonyflake"
 	"github.com/speps/go-hashids"
 
 	"github.com/shelton-hu/util/stringutil"
-	"github.com/shelton-hu/util/timeutil"
 )
 
 var sf *sonyflake.Sonyflake
-var randsrc = mathrand.NewSource(time.Now().Unix())
 
 func init() {
 	var st sonyflake.Settings
@@ -65,15 +60,6 @@ func GetUuid36(prefix string) string {
 	}
 
 	return prefix + stringutil.Reverse(i)
-}
-
-// 生成订单号(订单号格式: 首字母 + 年(后两位) + 月(两位) + 日(两位) + 时(两位) + 分(两位) + 模块号(两位) + 随机数(四位)))
-func GetOrderNo(firstLetter string, moduelNo string) string {
-	// 1.取年月日时分
-	datetimeString := timeutil.Time2String(time.Now(), "0601021504")
-	// 2.取流水号
-	serialString := fmt.Sprintf("%0*d", 4, mathrand.New(randsrc).Intn(9999))
-	return stringutil.StringJoin(firstLetter, datetimeString, moduelNo, serialString)
 }
 
 func randString(letters string, n int) string {

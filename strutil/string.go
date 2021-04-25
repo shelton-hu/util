@@ -1,11 +1,11 @@
-package stringutil
+package strutil
 
 import (
 	"strings"
 	"unicode/utf8"
 )
 
-func StringJoin(array ...string) string {
+func Join(array ...string) string {
 	buf := new(strings.Builder)
 	for _, s := range array {
 		buf.WriteString(s)

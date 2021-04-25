@@ -46,3 +46,7 @@ func Gen8LetterUuid() string {
 	}
 	return strings.Join(res, "")
 }
+
+func GenUuid() string {
+	return uuid.NewV4().String()
+}

@@ -1,4 +1,4 @@
-package convertutil
+package protoutil
 
 import (
 	"bytes"

@@ -23,3 +23,10 @@ func Reverse(s string) string {
 	}
 	return string(buf)
 }
+
+func BuildRedisKey(prefix string, suffixs ...string) string {
+	strs := make([]string, 0, 1+len(suffixs))
+	strs = append(strs, prefix)
+	strs = append(strs, suffixs...)
+	return strings.Join(strs, ":")
+}

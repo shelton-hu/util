@@ -3,7 +3,7 @@ module github.com/shelton-hu/util
 go 1.16
 
 require (
-	github.com/ghodss/yaml v1.0.0
+	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/gogo/protobuf v1.3.2
 	github.com/satori/go.uuid v1.2.0
 	github.com/sony/sonyflake v1.0.0

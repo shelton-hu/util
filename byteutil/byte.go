@@ -1,6 +1,6 @@
 package byteutil
 
-import "encoding/json"
+import "github.com/vmihailenco/msgpack"
 
 type Bytes struct {
 	bytes []byte
@@ -13,7 +13,7 @@ func Write(bytes []byte) *Bytes {
 }
 
 func WriteObject(obj interface{}) *Bytes {
-	bytes, err := json.Marshal(obj)
+	bytes, err := msgpack.Marshal(obj)
 	if err != nil {
 		panic(err)
 	}
@@ -27,7 +27,7 @@ func (b *Bytes) Read() []byte {
 }
 
 func (b *Bytes) ReadObject(obj interface{}) {
-	if err := json.Unmarshal(b.bytes, &obj); err != nil {
+	if err := msgpack.Unmarshal(b.bytes, &obj); err != nil {
 		panic(err)
 	}
 }
